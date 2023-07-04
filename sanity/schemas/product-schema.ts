@@ -1,13 +1,13 @@
 import { defineField, defineType } from "sanity";
 
 export const product = defineType({
-    name: "product",
-    title: "Products",
+    name: "produit",
+    title: "Produits",
     type: "document",
     fields: [
         defineField({
-            name: "name",
-            title: "Name",
+            name: "nom",
+            title: "Nom",
             type: "string"
         }),
         {
@@ -31,14 +31,14 @@ export const product = defineType({
             of: [{type: 'string'}]
         },
         {
-            name: "sizes",
-            title: "Sizes",
+            name: "taille",
+            title: "Taille",
             type: "array",
             of: [{type: 'string'}]
         },
         {
-            name: "colors",
-            title: "Colors",
+            name: "couleur",
+            title: "Couleur",
             type: "array",
             of: [{type: 'string'}]
         },
@@ -47,19 +47,15 @@ export const product = defineType({
             title: "Description",
             type: "string",
         },
-        {
-            name: "sku",
-            title: "Sku",
-            type: "string",
-        },
+       
         {
             name: "currency",
             title: "Currency",
             type: "string",
         },
         {
-            name: "price",
-            title: "Price",
+            name: "prix",
+            title: "Prix",
             type: "number",
         },
     ]
