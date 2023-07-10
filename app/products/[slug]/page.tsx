@@ -11,10 +11,10 @@ interface Props {
    }
 }
 
-export default async function Page( {params }: Props) {
-  const product = await client.fetch<SanityProduct>(
+export default async function Page( { params }: Props) {
+  const product  = await client.fetch<SanityProduct>(
     groq`
-    *[_type == "product" && slug.current == "${params.slug}"][0]{
+    *[_type == "product" && slug.current == "${params.slug}"][0] {
     _id,
     _createdAt,
     "id": _id,
@@ -27,7 +27,7 @@ export default async function Page( {params }: Props) {
     sizes,
     categories,
     colors,
-    "slug": slug.cur rent
+    "slug": slug.current
   } `)
   return (
     <main className="mx-auto max-w-5xl sm:px-6 sm:pt-16 lg:px-8">
