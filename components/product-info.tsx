@@ -15,6 +15,7 @@ interface Props {
 }
 
 export function ProductInfo({ product }: Props) {
+  console.log("product.sizes[0]",product)
   const [selectedSize, setSelectedSize] = useState(product.sizes[0])
   function addToCart() {}
 
