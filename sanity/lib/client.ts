@@ -7,6 +7,7 @@ export const client = createClient({
   dataset,
   projectId,
   useCdn,
-  apiHost: process.env.NEXT_PUBLIC_BASE_URL || "https://ecom-murex.vercel.app/",
+  useCdn: "https://ecom-murex.vercel.app",
+  //apiHost: process.env.NEXT_PUBLIC_BASE_URL || "https://ecom-murex.vercel.app/",
   //token: "skf9CboCyKsCdHF8MoncRHIC0vB4FggXkfap754xuPaDsJOnpAkVSLexpDfYIk2HGprCVeUyvMVCG2rFBMYTszYPLUoa0eCUSsnGx2WWVZxSYg18fw5zEEqYfPIOtssM9v05z4Ky1uGWLKgPazELYa2qWepd6vTMCfJVgM0d2onNzhwf3r3V",
 })
