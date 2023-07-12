@@ -34,21 +34,7 @@ export default async function Page({searchParams} : Props) {
 
   const filter = `*[${productFilter}${colorFilter}${categoryFilter}${sizeFilter}${searchFilter}]`
   const products = await client.fetch<SanityProduct[]>(
-     groq` *[_type == "produit"] {
-      _id,
-      _createdAt,
-      "id": _id,
-      name,
-      sku,
-      images,
-      currency,
-      price,
-      description, 
-      sizes,
-      categories,
-      colors,
-      "slug": slug.current
-    }`
+     groq` *[_type == "produit"] `
   )
 
   console.log(products)
