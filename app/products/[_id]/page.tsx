@@ -7,16 +7,17 @@ import { ProductInfo } from "@/components/product-info"
 
 interface Props {
   params: { 
-    slug: string 
+    _id: string 
    }
 }
 
 export default async function Page( { params }: Props) {
+  console.log("params:", params)
   const product  = await client.fetch<SanityProduct>(
     groq`
-    *[_type == "produit" && slug.current == "${params.slug}"] {
+    *[_type == "produit" && _id == "${params._id}"][0] {
     _id,
-    _createdAt,
+    _createdAt, 
     "id": _id,
     name,
     sku,
@@ -35,7 +36,7 @@ export default async function Page( { params }: Props) {
         {/* Product */}
         <div className="pb-20 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-12">
           {/* Product gallery */}
-         
+         <ProductGallery product={product}  />
           {/* Product info */}
           <ProductInfo product={product}/>
         </div>

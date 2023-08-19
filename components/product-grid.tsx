@@ -1,5 +1,4 @@
-"use client"
-
+'use client'
 import Image from "next/image"
 import Link from "next/link"
 import { urlForImage } from "@/sanity/lib/image"
@@ -14,6 +13,7 @@ interface Props {
 }
 
 export function ProductGrid({products}: Props) {
+  console.log("produits grid: ",products)
   if (products.length === 0) {
     return (
       <div className="mx-auto grid h-40 w-full place-items-center rounded-md border-2 border-dashed bg-gray-50 py-10 text-center dark:bg-gray-900">
@@ -31,9 +31,9 @@ export function ProductGrid({products}: Props) {
     <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-3 lg:col-span-3 lg:gap-x-8">
       {products.map((product) => (
         
-        <Link key={product._id}  href={`/products/test`} className="group text-sm">
-          
+        <Link key={product._id}  href={`/products/${product._id}`} className="group text-sm">
           <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg border-2 border-gray-200 bg-gray-100 group-hover:opacity-75 dark:border-gray-800">
+          
             <Image
               placeholder="blur"
               blurDataURL={`data:image/svg+xml;base64,${toBase64(
