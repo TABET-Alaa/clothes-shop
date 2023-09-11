@@ -13,7 +13,7 @@ interface Props {
 
 export function ProductGallery({ product }: Props) {
   const [selectedImage, setSelectedImage] = useState(0)
-  console.log("product.images:",product.images)
+  console.log("product.images:",product.images.map((image) => ( urlForImage(image).url())) )
   return (
     <div className="flex flex-col-reverse">
       {/* Image Grid */}
@@ -34,7 +34,7 @@ export function ProductGallery({ product }: Props) {
                   blurDataURL={`data:image/svg+xml;base64,${toBase64(
                     shimmer(200, 200)
                   )}`}
-                  alt=""
+                  alt="test"
                   className="h-full w-full object-cover object-center"
                 />
               </span>

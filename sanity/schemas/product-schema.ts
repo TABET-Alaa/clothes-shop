@@ -6,8 +6,8 @@ export const product = defineType({
     type: "document",
     fields: [
         defineField({
-            name: "nom",
-            title: "Nom",
+            name: "name",
+            title: "name",
             type: "string"
         }),
         {
@@ -54,7 +54,7 @@ export const product = defineType({
             type: "string",
         },
         {
-            name: "prix",
+            name: "price",
             title: "Prix",
             type: "number",
         },

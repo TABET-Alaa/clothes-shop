@@ -47,7 +47,7 @@ export function ProductGrid({products}: Props) {
             />
           </div>
           <h3 className="mt-4 font-medium">{product.name}</h3>
-          <p className="mt-2 font-medium"></p>
+          <p className="mt-2 font-medium">{product.price} DH </p>
         </Link>
       ))}
     </div>

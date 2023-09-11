@@ -26,14 +26,16 @@ export function ProductInfo({ product }: Props) {
       // product_data: {
         // size
       }
+      console.log("item: ", item)
+
       isInCart ? incrementItem(item._id) : addItem(item)
       toast({
         title: `${item.name}`,
-        description: "Product added to cart",
+        description: "Produit ajouté au panier",
         action: (
           <Link href="/cart">
             <Button variant="link" className="gap-x-2 whitespace-nowrap">
-              <span>Open cart</span>
+              <span>Ouvrir panier</span>
               <ArrowRight className='h-5 w-5'/>
             </Button>
           </Link>
@@ -48,7 +50,7 @@ export function ProductInfo({ product }: Props) {
 
       <div className="mt-3">
         <h2 className="sr-only">Product information</h2>
-        {/* <p className="text-3xl tracking-tight">{formatCurrencyString({ value: product.price, currency: product.currency})}</p> */}
+        <p className="text-3xl tracking-tight">{formatCurrencyString({ value: product.price, currency: product.currency})}</p>
       </div>
 
       <div className="mt-6">
@@ -74,7 +76,7 @@ export function ProductInfo({ product }: Props) {
             className="w-full bg-violet-600 py-6 text-base font-medium text-white hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500"
             onClick={addToCart}
           >
-            Add to cart
+            Ajouter au panier
           </Button>
         </div>
       </form>
