@@ -15,7 +15,6 @@ interface Props {
 }
 
 export function ProductInfo({ product }: Props) {
-  console.log("produict",product)
   //const [selectedSize, setSelectedSize] = useState(product.sizes[0])
   const { addItem , incrementItem, cartDetails } = useShoppingCart()
   const {  toast } = useToast()
@@ -26,7 +25,7 @@ export function ProductInfo({ product }: Props) {
       // product_data: {
         // size
       }
-      console.log("item: ", item)
+      console.log('cartDetails:',cartDetails)
 
       isInCart ? incrementItem(item._id) : addItem(item)
       toast({

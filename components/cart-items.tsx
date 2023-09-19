@@ -61,7 +61,7 @@ export function CartItems() {
                     </Link>
                   </h3>
                 </div>
-                <p className="mt-1 text-sm font-medium">Prix</p>
+                <p className="mt-1 text-sm font-medium">Prix : {product.price}  DH</p>
                 <p className="mt-1 text-sm font-medium">
                   Taille: {/* @ts-ignore */}
                   <strong>Taille</strong>
