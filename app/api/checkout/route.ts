@@ -79,7 +79,8 @@ export async function POST(request: Request) {
         mode: "payment",
         payment_method_types: ['card'],
         line_items: formattedDataArray,
-          success_url: `${origin}/success`,        //cancel_url: `${request.headers.get("origin")}/?canceled=true`
+                  success_url: 'https://shop-abdou.vercel.app/success',        //cancel_url: `${request.headers.get("origin")}/?canceled=true`
+        //cancel_url: `${request.headers.get("origin")}/?canceled=true`
     })
 
     return NextResponse.json({session});
