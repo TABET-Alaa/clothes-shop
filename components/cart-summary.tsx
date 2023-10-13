@@ -5,6 +5,7 @@ import { Loader2 } from "lucide-react"
 import { formatCurrencyString, useShoppingCart } from "use-shopping-cart"
 
 import { Button } from "@/components/ui/button"
+import getStipePromise from "@/lib/stripe"
 const products = [
   {product:1,
   name: "Stripe Product",
@@ -16,23 +17,34 @@ export function CartSummary() {
   //const shippingAmount = cartCount!  > 0 ? 500 : 0
   const shippingAmount = 20
   const totalAmount = totalPrice! + shippingAmount
+
   async function onCheckout() {
-    console.log('cartDetails:',cartDetails)
+    const stripe = await getStipePromise();
+
     const response = await fetch('/api/checkout', {
       method: 'POST',
       body: JSON.stringify(cartDetails)
     })
-
-    const data = await response.json()
     
+    const data = await response.json()
+    console.log("12344444444444444444",data.session)
+    
+    const sessionId = data.session.id 
+    //if (data.session) {
+     stripe?.redirectToCheckout({"sessionId": sessionId});
+    //}
+    //const result = await redirectToCheckout(sessionId)
 
-    const result = await redirectToCheckout(data.id)
 
-
-    if (result?.error){
+   /* if (result?.error){
       console.error(result)
-    }
+    }*/
   }
+  function onChekout2(){
+    window.location.href ="https://checkout.stripe.com/c/pay/cs_test_a1pNDsdfDzQJ6eBDruT5Pujd8j78AA38yTk9z1jABEIFKEDOsQW7qG5lCV#fidkdWxOYHwnPyd1blpxYHZxWjA0S3V0MVBONzNtSzxRVnN3fWlcbHJ8UnNGYjM2bnJiV0RDRlFtaUM9XE1BUWx3R31VclE1fXxsZFJEbXdXaEprcDV%2FMTxqT0dRfHRtckYyUVI0T0k0UW9uNTVObj02RkNTRycpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl"; 
+
+  }
+  
 
   return (
     <section
@@ -61,7 +73,7 @@ export function CartSummary() {
       </dl>
 
       <div className="mt-6">
-        <Button onClick={onCheckout} className="w-full">
+        <Button onClick={onCheckout} type="button" className="w-full">
           Commander
         </Button>
       </div>
