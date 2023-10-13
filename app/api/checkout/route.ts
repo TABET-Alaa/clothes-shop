@@ -14,7 +14,8 @@ export const stripe = new Stripe(key , {
 
 export async function POST(request: Request) {
     /* */
-    
+        const origin =  request.headers.get('origin')
+
     const cartDetails = await request.json()
     console.log("cartDetails: ", cartDetails)
     const lineItems =  [
@@ -78,7 +79,7 @@ export async function POST(request: Request) {
         mode: "payment",
         payment_method_types: ['card'],
         line_items: formattedDataArray,
-          success_url: 'http://localhost:3000/success',        //cancel_url: `${request.headers.get("origin")}/?canceled=true`
+          success_url: `${origin}/success`,        //cancel_url: `${request.headers.get("origin")}/?canceled=true`
     })
 
     return NextResponse.json({session});
