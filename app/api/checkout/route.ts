@@ -1,4 +1,4 @@
-import { NextResponse } from "@next/server";
+import { NextResponse } from "next/server";
 // @ts-ignore
 import { formatLineItems } from "use-shopping-cart/utilities"
 
