@@ -1,21 +1,15 @@
 import { NextResponse } from "next/server";
 // @ts-ignore
 import { formatLineItems } from "use-shopping-cart/utilities"
-
 import { inventory } from "@/config/inventory"
-import Stripe from "stripe";
+import Stripe from "stripe";       
+import stripe from "@/app/stripeConfig";
 //import { stripe } from "@/lib/stripe"
 
-const key = process.env.STRIPE_SECRET_KEY || "";
-
-export const stripe = new Stripe(key , {
-  apiVersion: "2022-11-15",
-})
 
 export async function POST(request: Request) {
     /* */
-        const origin =  request.headers.get('origin')
-
+    
     const cartDetails = await request.json()
     console.log("cartDetails: ", cartDetails)
     const lineItems =  [
@@ -79,8 +73,7 @@ export async function POST(request: Request) {
         mode: "payment",
         payment_method_types: ['card'],
         line_items: formattedDataArray,
-                  success_url: 'https://shop-abdou.vercel.app/success',        //cancel_url: `${request.headers.get("origin")}/?canceled=true`
-        //cancel_url: `${request.headers.get("origin")}/?canceled=true`
+          success_url: 'http://localhost:3000/success',        //cancel_url: `${request.headers.get("origin")}/?canceled=true`
     })
 
     return NextResponse.json({session});
